@@ -1,0 +1,11 @@
+<div class="input-group mb-3">
+    <input
+        type="text"
+        name="name"
+        id="name"
+        class="form-control"
+        placeholder="placeholder"
+        aria-describedby="suffixId"
+    />
+    <span class="input-group-text" id="suffixId">suffix</span>
+</div>
