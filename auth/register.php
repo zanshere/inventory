@@ -94,8 +94,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <!-- TailwindCSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- CSS -->
+     <link rel="stylesheet" href="../assets/CSS/font.css">
+     <!-- Icon -->
+    <link rel="shortcut icon" href="../assets/Images/box_icon_126533.ico" type="image/x-icon">
 </head>
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen flex items-center justify-center">
     <div class="w-full max-w-md fade-in">
@@ -115,28 +123,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- Form -->
             <form action="" method="POST">
                 <input type="hidden" name="action" value="register">
+
                 <div class="mb-4">
                     <label for="username" class="block text-sm font-bold text-gray-700">Username</label>
                     <input type="text" class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500" name="username" placeholder="Your Username" required>
                 </div>
+
                 <div class="mb-4">
                     <label for="password" class="block text-sm font-bold text-gray-700">Password</label>
-                    <input type="password" class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500" name="password" placeholder="Password Here" required>
+                    <input type="password" id="password" class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500" name="password" placeholder="Password Here" required>
+
+                    <!-- Toggle Button (Icon + Text) -->
+                    <button type="button" id="togglePasswordText" class="mt-2 flex items-center text-left text-indigo-500 focus:outline-none">
+                        <i class="fa-regular fa-eye mr-2"></i>
+                        <span>Show Password</span>
+                    </button>
                 </div>
+
                 <div class="mb-4">
                     <label for="full_name" class="block text-sm font-bold text-gray-700">Full Name</label>
                     <input type="text" class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500" name="full_name" placeholder="John Doe" required>
                 </div>
+
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-bold text-gray-700">Email Address</label>
                     <input type="email" class="mt-1 block w-full border border-gray-300 rounded-lg p-2 focus:ring-indigo-500 focus:border-indigo-500" name="email" placeholder="name@example.com" required>
                 </div>
-                </div>
+
                 <div class="flex justify-between items-center mb-6">
-                    <p class="text-sm text-white">
+                    <p class="text-sm text-gray-700">
                         Already have an account? <a href="login.php" class="text-indigo-500 hover:underline font-semibold">Login</a>
                     </p>
                 </div>
+
                 <button type="submit" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out">
                     Confirm
                 </button>
@@ -171,5 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php unset($_SESSION['register_message']); ?>
         <?php endif; ?>
     </script>
+    <!-- Toggle Password -->
+    <script src="../assets/JS/togglePassword.js"></script>
 </body>
 </html>
