@@ -1,0 +1,8 @@
+/* Font Google */
+@import url('https://fonts.googleapis.com/css2?family=Cagliostro&family=Funnel+Display:wght@300..800&family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Outfit:wght@100..900&family=Playwrite+DE+Grund:wght@100..400&family=Varela+Round&display=swap');
+
+* {
+    font-family: "Varela Round", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
