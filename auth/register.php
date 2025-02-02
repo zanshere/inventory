@@ -26,7 +26,7 @@ function incrementFailedAttempts($conn, $email) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if ($row['failed_attempts'] >= 5) {
-            $banUntil = date('Y-m-d H:i:s', strtotime('+15 minutes'));
+            $banUntil = date('Y-m-d H:i:s', strtotime('+5 minutes'));
             $banQuery = "UPDATE users SET banned_until = '$banUntil' WHERE email = '$email'";
             $conn->query($banQuery);
         }
