@@ -24,8 +24,9 @@ RewriteEngine On
 RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
 
 # Cek IP yang tidak diizinkan
+# Gunakan IP Public, bisa cek di website whatsmyip
 RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
-RewriteCond %{REMOTE_ADDR} !^103\.121\.244\.173$
+RewriteCond %{REMOTE_ADDR} !^103\.121\.244\.173$ 
 
-# Trigger error 400 dengan R=400
-RewriteRule ^ - [R=400,L]
+# Trigger error disini
+# RewriteRule ^ - [R=404,L]
