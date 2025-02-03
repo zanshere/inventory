@@ -17,7 +17,7 @@
 <nav class="bg-white bg-opacity-30 backdrop-blur-md shadow-md fixed w-full z-10">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         <!-- Logo -->
-        <div class="text-2xl font-bold text-gray-100">Retail Inventory</div>
+        <div class="text-2xl font-bold text-gray-100">Inventory</div>
 
         <!-- Hamburger Menu -->
         <button @click="isOpen = !isOpen" class="text-gray-100 focus:outline-none">
@@ -35,7 +35,7 @@
     x-transition:leave="transition ease-in-out duration-300" 
     x-transition:leave-start="transform translate-x-0 opacity-100" 
     x-transition:leave-end="transform translate-x-full opacity-0"
-    class="fixed inset-y-0 right-0 w-64 bg-white h-full p-6 space-y-6 z-20">
+    class="fixed inset-y-0 right-0 w-64 bg-white bg-opacity-50 backdrop-blur-md shadow-md h-full p-6 space-y-6 z-20">
     <!-- Sidebar Content -->
     <div class="flex justify-between items-center ">
         <h2 class="text-lg font-semibold text-gray-900">Menu</h2>
