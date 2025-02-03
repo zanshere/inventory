@@ -1,7 +1,6 @@
 <?php
-
-
-
+include 'connect.php';
+// Buat disini
 
 ?>
 <!DOCTYPE html>
@@ -9,16 +8,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="assets/Images/box_icon_126533.ico" type="image/x-icon"> 
 </head>
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen" x-data="{ isOpen: false, currentPage: 'home' }">
 <nav class="bg-white bg-opacity-30 backdrop-blur-md shadow-md fixed w-full z-10">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         <!-- Logo -->
         <div class="text-2xl font-bold text-gray-100">Inventory</div>
-
         <!-- Hamburger Menu -->
         <button @click="isOpen = !isOpen" class="text-gray-100 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
