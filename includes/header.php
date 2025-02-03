@@ -10,6 +10,7 @@ include 'connect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css'>
     <link rel="shortcut icon" href="assets/Images/box_icon_126533.ico" type="image/x-icon"> 
 </head>
 <body class="bg-gradient-to-br from-slate-700 via-slate-500 to-slate-700 min-h-screen" x-data="{ isOpen: false, currentPage: 'home' }">
@@ -45,15 +46,15 @@ include 'connect.php';
         </button>
     </div>
     <ul class="space-y-4">
-        <li><a href="#" class="text-slate-300 hover:text-white">Home</a></li>
-        <li><a href="#" class="text-slate-300 hover:text-white">About</a></li>
-        <li><a href="#" class="text-slate-300 hover:text-white">Products</a></li>
-        <li><a href="#" class="text-slate-300 hover:text-white">Inventory</a></li>
-        <li><a href="#" class="text-slate-300 hover:text-white">Orders</a></li>
-        <li><a href="#" class="text-slate-300 hover:text-white">Customers</a></li>
-        <li><a href="#" class="text-slate-300 hover:text-white">Contact Us</a></li>
-        <li><a href="#" class="text-slate-300 hover:text-white">FAQs</a></li>
-        <li><a href="#" class="text-slate-300 hover:text-white">Control Account</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-home mx-2"></i>Home</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-info mx-2"></i>About</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-boxes mx-2"></i>Products</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-box-open mx-2"></i>Inventory</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-shopping-cart mx-2"></i>Orders</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-users mx-2"></i>Customers</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-paper-plane mx-2"></i>Contact Us</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-comments-question mx-2"></i>FAQs</a></li>
+        <li><a href="#" class="text-slate-300 hover:text-white"><i class="fi fi-rs-settings mx-2"></i>Control Account</a></li>
     </ul>
 </div>
 
