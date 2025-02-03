@@ -1,0 +1,31 @@
+ErrorDocument 400 /git-project/inventory/error.php?code=400
+ErrorDocument 401 /git-project/inventory/error.php?code=401
+ErrorDocument 402 /git-project/inventory/error.php?code=402
+ErrorDocument 403 /git-project/inventory/error.php?code=403
+ErrorDocument 404 /git-project/inventory/error.php?code=404
+ErrorDocument 405 /git-project/inventory/error.php?code=405
+ErrorDocument 406 /git-project/inventory/error.php?code=406
+ErrorDocument 407 /git-project/inventory/error.php?code=407
+ErrorDocument 408 /git-project/inventory/error.php?code=408
+ErrorDocument 409 /git-project/inventory/error.php?code=409
+ErrorDocument 410 /git-project/inventory/error.php?code=410
+ErrorDocument 429 /git-project/inventory/error.php?code=429
+ErrorDocument 500 /git-project/inventory/error.php?code=500
+ErrorDocument 501 /git-project/inventory/error.php?code=501
+ErrorDocument 502 /git-project/inventory/error.php?code=502
+ErrorDocument 503 /git-project/inventory/error.php?code=503
+ErrorDocument 504 /git-project/inventory/error.php?code=504
+ErrorDocument 508 /git-project/inventory/error.php?code=508
+
+# Maintenance Mode
+RewriteEngine On
+
+# Skip error.php dari rewrite
+RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
+
+# Cek IP yang tidak diizinkan
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
+RewriteCond %{REMOTE_ADDR} !^103\.121\.244\.173$
+
+# Trigger error 400 dengan R=400
+RewriteRule ^ - [R=400,L]
