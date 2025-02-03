@@ -26,7 +26,7 @@ RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
 # Cek IP yang tidak diizinkan
 # Gunakan IP Public, bisa cek di website whatsmyip
 RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
-RewriteCond %{REMOTE_ADDR} !^103\.121\.244\.173$ 
+RewriteCond %{REMOTE_ADDR} !^101\.255\.158\.90$ 
 
 # Trigger error disini
-# RewriteRule ^ - [R=404,L]
+RewriteRule ^ - [R=503,L]
