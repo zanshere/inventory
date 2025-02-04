@@ -57,14 +57,16 @@ CREATE TABLE `logs` (
 -- Struktur dari tabel `users`
 --
 
-CREATE TABLE `users` (
-  `id` int NOT NULL,
-  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `full_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `role` enum('admin','staff','user') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'user',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    full_name VARCHAR(100) NOT NULL,
+    failed_attempts INT DEFAULT 0,
+    banned_until DATETIME DEFAULT NULL,
+    role ENUM('admin', 'staff', 'user') DEFAULT 'user',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
