@@ -52,4 +52,3 @@ RewriteRule ^ - [R=403,L]
 Header set X-Content-Type-Options "nosniff"
 Header set X-Frame-Options "SAMEORIGIN"
 Header set X-XSS-Protection "1; mode=block"
->>>>>>> 473af88 (meningkatkan & mengoptimalkan agar minim error)
