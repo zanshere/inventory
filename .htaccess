@@ -1,3 +1,8 @@
+# Aktifkan mod_rewrite
+RewriteEngine On
+
+# Pengaturan ErrorDocument
+# Menggunakan wildcard untuk mencakup semua kode error
 ErrorDocument 400 /git-project/inventory/error.php?code=400
 ErrorDocument 401 /git-project/inventory/error.php?code=401
 ErrorDocument 402 /git-project/inventory/error.php?code=402
@@ -17,19 +22,34 @@ ErrorDocument 503 /git-project/inventory/error.php?code=503
 ErrorDocument 504 /git-project/inventory/error.php?code=504
 ErrorDocument 508 /git-project/inventory/error.php?code=508
 
-# Maintenance Mode
-RewriteEngine On
-
-# Skip error.php dari rewrite
+# Memastikan error.php tidak ikut diproses oleh rewrite
 RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
 
-# Cek IP yang tidak diizinkan
-# Gunakan IP Public, bisa cek di website whatsmyip
-RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
-# IP Toni
-RewriteCond %{REMOTE_ADDR} !^101\.255\.158\.90$
-# IP Gua
-#RewriteCond %{REMOTE_ADDR} !^101\.255\.158\.90$
+# Trigger error 404 jika kondisi tertentu terpenuhi
+# Gunakan ini hanya jika benar-benar ingin mengarahkan semua akses ke error page
+# Hati-hati dengan rule ini, pastikan hanya dipakai dalam kondisi yang tepat
+RewriteRule ^ - [R=403,L]
 
-# Trigger error disini
-# RewriteRule ^ - [R=503,L]   
+# Maintenance Mode - Mengaktifkan mode pemeliharaan untuk mencegah akses dari pengunjung
+# Komentar baris ini jika tidak sedang dalam pemeliharaan
+# RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$ [NC]
+# RewriteCond %{REMOTE_ADDR} !^101\.255\.158\.90$ [NC]  # Ganti dengan IP yang diizinkan
+# RewriteRule ^ /git-project/inventory/maintenance.html [R=503,L]
+
+# Caching Rules untuk mengurangi beban server (opsional)
+# Caching untuk file statis seperti gambar, CSS, dan JS
+<FilesMatch "\.(jpg|jpeg|png|gif|css|js|woff|woff2|ttf|svg|eot)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+# Amankan file .htaccess dan lainnya
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Mengaktifkan mod_headers untuk menambah kontrol atas headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
+>>>>>>> 473af88 (meningkatkan & mengoptimalkan agar minim error)
