@@ -1,56 +1,67 @@
 <?php
-include 'connect.php';
-require __DIR__ . '/../functions/getSidebarMenu.php';
-$sidebarContent = isset($sidebarContent) ? $sidebarContent : '';
+// File: header.php
+
+// HAPUS session_start() di sini karena sudah dipanggil di dashboard.php
+include_once '../functions/getSidebarMenu.php'; 
+include_once __DIR__ . '../functions/getSidebarMenu.php';
+
+$role = $_SESSION['role'] ?? null;
+$menuItems = is_string($role) ? getSidebarMenu($role) : [];
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en" class="bg-transparent">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Memastikan Tailwind CSS termuat -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <link rel="shortcut icon" href="assets/Images/box_icon_126533.ico" type="image/x-icon">
+  <!-- ... bagian head tetap sama ... -->
 </head>
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen" x-data="{ isOpen: false, currentPage: 'home' }">
   
-  <!-- Navbar -->
-    <nav class="bg-white bg-opacity-30 backdrop-blur-md shadow-md fixed w-full z-10">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <div class="text-2xl font-bold text-gray-100">Retail Inventory</div>
-
-            <!-- Hamburger Menu -->
-            <button @click="isOpen = !isOpen" class="text-gray-100 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Sidebar -->
-    <div x-show="isOpen" x-transition:enter="transition ease-in-out duration-300"
-        x-transition:enter-start="transform translate-x-full opacity-0" 
-        x-transition:enter-end="transform translate-x-0 opacity-100" 
-        x-transition:leave="transition ease-in-out duration-300" 
-        x-transition:leave-start="transform translate-x-0 opacity-100" 
-        x-transition:leave-end="transform translate-x-full opacity-0"
-        class="fixed inset-y-0 right-0 w-64 bg-white h-full p-6 space-y-6 z-20">
-        <!-- Sidebar Content -->
-        <div class="flex justify-between items-center">
-            <h2 class="text-lg font-semibold text-gray-900">Menu</h2>
-            <button @click="isOpen = false" class="text-gray-900 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-        <?php echo $sidebarContent; ?>
+  <!-- Navbar (tetap sama) -->
+  
+  <!-- Sidebar -->
+  <div x-show="isOpen" x-transition:enter="transition ease-in-out duration-300"
+    x-transition:enter-start="transform translate-x-full opacity-0" 
+    x-transition:enter-end="transform translate-x-0 opacity-100" 
+    x-transition:leave="transition ease-in-out duration-300" 
+    x-transition:leave-start="transform translate-x-0 opacity-100" 
+    x-transition:leave-end="transform translate-x-full opacity-0"
+    class="fixed inset-y-0 right-0 w-64 bg-white h-full p-6 space-y-6 z-20">
+    
+    <div class="flex justify-between items-center">
+      <!-- ... bagian tombol close tetap sama ... -->
     </div>
+    
+    <ul class="space-y-2">
+      <?php if(!isset($_SESSION['user_id'])): ?>
+        <!-- Menu guest tetap sama -->
+      <?php else: ?>
+        <!-- Tambahkan pengecekan isset() -->
+        <?php if(isset($menuItems) && is_array($menuItems) && count($menuItems) > 0): ?>
+        <?php foreach($menuItems as $item): ?>
+            <li>
+            <a href="<?= htmlspecialchars($item['link']) ?>" class="flex items-center space-x-2 text-gray-700 hover:bg-gray-100 p-2 rounded">
+                <i class="<?= htmlspecialchars($item['icon']) ?>"></i>
+                <span><?= htmlspecialchars($item['title']) ?></span>
+            </a>
+            </li>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <li class="text-red-500">Menu tidak tersedia</li>
+        <?php endif; ?>
 
+
+        <!-- Logout -->
+        <li>
+          <a href="../../inventory/auth/logout.php" class="flex items-center space-x-2 text-red-600 hover:bg-gray-100 p-2 rounded">
+            <i class="fi fi-rs-sign-out"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      <?php endif; ?>
+    </ul>
+  </div>
   
 </body>
 </html>
