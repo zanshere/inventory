@@ -28,7 +28,7 @@ RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
 # Trigger error 404 jika kondisi tertentu terpenuhi
 # Gunakan ini hanya jika benar-benar ingin mengarahkan semua akses ke error page
 # Hati-hati dengan rule ini, pastikan hanya dipakai dalam kondisi yang tepat
-# RewriteRule ^ - [R=403,L]
+# RewriteRule ^ - [R=408,L] 
 
 # Maintenance Mode - Mengaktifkan mode pemeliharaan untuk mencegah akses dari pengunjung
 # Komentar baris ini jika tidak sedang dalam pemeliharaan

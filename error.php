@@ -18,7 +18,7 @@ function handle_error($error_code) {
         401 => ['title' => 'Unauthorized', 'message' => 'Authentication required to access this resource', 'colors' => ['#4b7bec', '#45aaf2']],
         402 => ['title' => 'Payment Required', 'message' => 'Payment is needed to fulfill the request', 'colors' => ['#ffd93d', '#ff6b6b']],
         403 => ['title' => 'Forbidden', 'message' => "You don't have permission to access this content", 'colors' => ['#ff7f50', '#ff6b6b']],
-        404 => ['title' => 'Not Found', 'message' => 'The requested resource could not be located', 'colors' => ['#a55eea', '#778beb']],
+        404 => ['title' => 'Not Found', 'message' => 'The requested resource could not be found. It may have been moved or permanently deleted by the developer', 'colors' => ['#a55eea', '#778beb']],
         405 => ['title' => 'Method Not Allowed', 'message' => 'The request method is not supported for this resource', 'colors' => ['#6c5ce7', '#a55eea']],
         406 => ['title' => 'Not Acceptable', 'message' => 'Server cannot produce response matching accept headers', 'colors' => ['#00b894', '#55efc4']],
         407 => ['title' => 'Proxy Auth Required', 'message' => 'Proxy authentication is needed to access this resource', 'colors' => ['#fdcb6e', '#e17055']],
@@ -51,7 +51,7 @@ $colorsString = implode(', ', $error['colors']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error <?= $error_code ?> - <?= htmlspecialchars($error['title']) ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./assets/Images/box_icon_126533.ico" type="image/x-icon">
     <style>
         /* Reset dasar */
         * {
@@ -67,13 +67,13 @@ $colorsString = implode(', ', $error['colors']);
         /* Animasi background gradient */
         @keyframes gradient {
             0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            50% { background-position: 100% 90%; }
             100% { background-position: 0% 50%; }
         }
 
         .gradient-bg {
             background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            animation: gradient 5s ease infinite;
         }
 
         /* Animasi untuk card entrance */
@@ -100,7 +100,7 @@ $colorsString = implode(', ', $error['colors']);
                     <p class="text-gray-600 text-lg"><?= htmlspecialchars($error['message']) ?></p>
                 </div>
                 <div class="mt-6">
-                    <a href="/" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 inline-block">
+                    <a href="./index.php" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 inline-block">
                         ← Back to Home
                     </a>
                 </div>
