@@ -28,12 +28,12 @@ RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
 # Trigger error 404 jika kondisi tertentu terpenuhi
 # Gunakan ini hanya jika benar-benar ingin mengarahkan semua akses ke error page
 # Hati-hati dengan rule ini, pastikan hanya dipakai dalam kondisi yang tepat
-RewriteRule ^ - [R=403,L]
+# RewriteRule ^ - [R=403,L]
 
 # Maintenance Mode - Mengaktifkan mode pemeliharaan untuk mencegah akses dari pengunjung
 # Komentar baris ini jika tidak sedang dalam pemeliharaan
-# RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$ [NC]
-# RewriteCond %{REMOTE_ADDR} !^101\.255\.158\.90$ [NC]  # Ganti dengan IP yang diizinkan
+ RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$ [NC]
+ RewriteCond %{REMOTE_ADDR} !^182\.3\.43\.189$ [NC]  # Ganti dengan IP yang diizinkan
 # RewriteRule ^ /git-project/inventory/maintenance.html [R=503,L]
 
 # Caching Rules untuk mengurangi beban server (opsional)
