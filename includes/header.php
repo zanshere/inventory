@@ -1,7 +1,6 @@
 <?php
-// File: header.php
 
-// Pastikan session sudah dimulai
+// Memastikan SESSION sudah dimulai
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -11,23 +10,21 @@ include_once __DIR__ . '/../functions/getSidebarMenu.php';
 // Ambil role dari session (default: guest)
 $role = $_SESSION['role'] ?? 'guest';
 
-// Jika user belum login, kosongkan menu. Jika sudah login, ambil menu sesuai peran.
+// Jika user belum login, kosongkan menu. Jika sudah login, ambil menu sesuai role akun user.
 $menuItems = isset($_SESSION['user_id']) ? getSidebarMenu($role) : [];
 
 // Base URL untuk memastikan path konsisten
-define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan dengan base URL project Anda
+define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan dengan base URL 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
   <!-- Icon Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   <!-- Alpine.js -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
