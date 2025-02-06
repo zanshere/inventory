@@ -14,7 +14,8 @@ Proyek ini menggunakan teknologi berikut:
 
 Berikut adalah struktur direktori dari proyek ini:
 
-/inventori-dashboard
+<code>
+    /inventori-dashboard
 │
 ├── /assets
 │   ├── /css          
@@ -53,7 +54,8 @@ Berikut adalah struktur direktori dari proyek ini:
 │   └── logout.php
 │
 ├── index.php         
-└── .htaccess         
+└── .htaccess
+</code>         
 
 
 ## Anggota Tim
