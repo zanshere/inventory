@@ -1,8 +1,8 @@
-# 🛍️ Retail Inventory System
+# 🛍️ Retail Inventory Bases PHP 
 
-**Retail Inventory** adalah sistem manajemen inventaris yang dirancang untuk membantu pengelolaan produk, pengguna, dan laporan secara efisien. Dibangun dengan teknologi modern dan antarmuka yang user-friendly.
+**Retail Inventory** adalah sistem manajemen inventaris yang dirancang untuk membantu pengelolaan produk, pengguna, dan laporan secara efisien. Dibangun dengan teknologi modern dan antarmuka yang user-friendly. Dibuat dengan PHP Native dan dibantu dengan tailwindcss, SweetAlert.js dan Alpine.js.
 
-![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?style=flat&logo=php) ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3.3.2-06B6D4?style=flat&logo=tailwind-css) ![Alpine.js](https://img.shields.io/badge/Alpine.js-3.12.0-8BC0D0?style=flat&logo=alpine.js)
+![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?style=flat&logo=php) ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3.3.2-06B6D4?style=flat&logo=tailwind-css) ![Alpine.js](https://img.shields.io/badge/Alpine.js-3.12.0-8BC0D0?style=flat&logo=alpine.js) ![SweetAlert](https://img.shields.io/badge/SweetAlert-2.1.2-FF0000?style=flat&logo=javascript)
 
 ## 🛠️ Teknologi
 
