@@ -1,92 +1,88 @@
-# Retail Inventory
+# 🛍️ Retail Inventory System
 
-**Retail Inventory** adalah sistem manajemen inventaris yang dirancang untuk membantu pengguna dalam mengelola produk, pengguna, dan laporan secara efisien. Website ini dibangun menggunakan PHP Native, Tailwind CSS, SweetAlert, dan Alpine.js.
+**Retail Inventory** adalah sistem manajemen inventaris yang dirancang untuk membantu pengelolaan produk, pengguna, dan laporan secara efisien. Dibangun dengan teknologi modern dan antarmuka yang user-friendly.
 
-## Teknologi
+![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?style=flat&logo=php) ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3.3.2-06B6D4?style=flat&logo=tailwind-css) ![Alpine.js](https://img.shields.io/badge/Alpine.js-3.12.0-8BC0D0?style=flat&logo=alpine.js)
 
-Proyek ini menggunakan teknologi berikut:
-- **PHP Native**: Untuk logika backend.
-- **Tailwind CSS**: Framework CSS untuk tampilan responsif.
-- **SweetAlert**: Digunakan untuk menampilkan notifikasi dengan tampilan menarik.
-- **Alpine.js**: Digunakan untuk interaktivitas frontend.
+## 🛠️ Teknologi
 
-## Struktur Direktori
+Teknologi utama yang digunakan:
+- 🐘 **PHP Native** v8.0+ (Backend)
+- 🎨 **Tailwind CSS** v3.3 (Styling)
+- 🔔 **SweetAlert2** (Notifikasi Interaktif)
+- ⚡ **Alpine.js** v3.12 (Interaktivitas Frontend)
+- 🗃️ **MySQL** (Database)
 
-Berikut adalah struktur direktori dari proyek ini:
+## 📂 Struktur Direktori
 
-<code>
-    /inventori-dashboard
+```bash
+/inventori-dashboard
 │
-├── /assets
-│   ├── /css          
-│   ├── /js           
-│   └── /images       
+├── 📁 assets
+│   ├── 📁 css        # File CSS kustom
+│   ├── 📁 js         # File JavaScript
+│   └── 📁 images     # Aset gambar
 │
-├── /functions
+├── 📁 functions      # Fungsi utilitas
 │   ├── getSidebarMenu.php
 │   ├── isUserBanned.php
-│   └── incrementFailedAttempts.php
+│   └── ...
 │
-├── /includes         
+├── 📁 includes       # File inklusi global
 │   ├── db_connect.php
+│   ├── header.php
 │   └── footer.php
-    └── header.php
 │
-├── /pages            
-│   ├── /admin       
-│   │   ├── dashboard.php
-│   │   ├── manage_users.php
-│   │   ├── manage_inventory.php
-│   │   └── reports.php
-│   │
-│   ├── /staff        
-│   │   ├── dashboard.php
-│   │   ├── view_inventory.php
-│   │   └── add_inventory.php
-│   │
-│   └── /user        
-│       ├── dashboard.php
-│       └── view_inventory.php
+├── 📁 pages          # Halaman berdasarkan role
+│   ├── 📁 admin      # Dashboard admin
+│   ├── 📁 staff      # Dashboard staff
+│   └── 📁 user       # Dashboard pengguna
 │
-├── /auth             
+├── 📁 auth           # Sistem autentikasi
 │   ├── login.php
 │   ├── register.php
 │   └── logout.php
 │
-├── index.php         
-└── .htaccess
-</code>         
+├── 📄 index.php      # Entry point aplikasi
+└── 📄 .htaccess      # Konfigurasi server
 
+# 📦 Inventory Management System
 
-## Anggota Tim
+## 👥 Tim Pengembang
+| Anggota | Peran | Kontribusi Utama |
+|---------|------|------------------|
+| **Muhammad Fauzan** | 👨💻 Fullstack Dev | Arsitektur Sistem, Backend |
+| **Deta Alfan Setyavic** | 🎨 Frontend Dev | UI/UX Design |
+| **Muhammad Raihan Ramadhan** | 🎨 Frontend Dev | Implementasi Responsif |
 
-Proyek ini dikerjakan oleh tiga anggota dengan peran berikut:
-- **Muhammad Fauzan** => Fullstack Developer
-- **Deta Alfan Setyavic** => Frontend Developer
-- **Muhammad Raihan Ramadhan** => Frontend Developer
+## 📜 Lisensi
+Proyek ini dilisensikan di bawah **Apache License 2.0**.
 
-## LICENSE
+## 🚀 Instalasi
 
-Proyek ini menggunakan **Apache 2.0 License**. Anda dapat melihat detail lisensinya pada file [LICENSE](LICENSE).
+### Prasyarat:
+- **PHP** ≥ 8.0
+- **MySQL** ≥ 5.7
+- **Web Server** (Apache/Nginx)
 
-## Instalasi
+### Langkah-langkah:
 
-Untuk menginstal dan menjalankan proyek ini di lingkungan lokal, ikuti langkah-langkah berikut:
+#### 📦 Clone repositori
+```bash
+git clone https://github.com/zanshere/inventory.git
+cd inventory
+```
 
-1. Clone repositori ini:
-    <code>git clone https://github.com/zanshere/inventory.git</code>
+#### 🔧 Setup database
+1. Import file SQL dari direktori `sql/`
+2. Konfigurasi koneksi database di `includes/db_connect.php`
 
-2. Pastikan Anda memiliki PHP dan server lokal seperti XAMPP atau Laragon yang telah terpasang di mesin Anda.
+#### 🌐 Jalankan aplikasi
+1. Pindahkan folder proyek ke direktori web server.
+2. Buka di browser: [http://localhost/inventory](http://localhost/inventory)
 
-3. Pindah ke direktori proyek:
-    <code>cd inventory</code>
+## ❓ Bantuan
+Untuk pertanyaan atau masukan, silakan hubungi:
+📧 **tim@retail-inventory.com**
 
-
-4. Import database menggunakan file SQL yang ada di direktori `sql`.
-
-5. Jalankan server lokal Anda dan buka browser untuk mengakses aplikasi.
-
----
-
-Jika Anda memiliki pertanyaan atau masukan, jangan ragu untuk menghubungi kami!
-
+**Selamat Mengelola Inventaris! 🚀📊**
