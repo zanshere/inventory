@@ -45,6 +45,7 @@ Teknologi utama yang digunakan:
 │
 ├── 📄 index.php      # Entry point aplikasi
 └── 📄 .htaccess      # Konfigurasi server
+```
 
 # 📦 Inventory Management System
 
