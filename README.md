@@ -63,7 +63,7 @@ Proyek ini dikerjakan oleh tiga anggota dengan peran berikut:
 - **Deta Alfan Setyavic** => Frontend Developer
 - **Muhammad Raihan Ramadhan** => Frontend Developer
 
-## Lisensi
+## LICENSE
 
 Proyek ini menggunakan **Apache 2.0 License**. Anda dapat melihat detail lisensinya pada file [LICENSE](LICENSE).
 
@@ -72,11 +72,12 @@ Proyek ini menggunakan **Apache 2.0 License**. Anda dapat melihat detail lisensi
 Untuk menginstal dan menjalankan proyek ini di lingkungan lokal, ikuti langkah-langkah berikut:
 
 1. Clone repositori ini:
-
+    <code>git clone https://github.com/zanshere/inventory.git</code>
 
 2. Pastikan Anda memiliki PHP dan server lokal seperti XAMPP atau Laragon yang telah terpasang di mesin Anda.
 
 3. Pindah ke direktori proyek:
+    <code>cd inventory</code>
 
 
 4. Import database menggunakan file SQL yang ada di direktori `sql`.
