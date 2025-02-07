@@ -27,6 +27,30 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   <!-- Alpine.js -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- CSS -->
+  <style>
+    .nav-link {
+    color: #ccc;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, background 0.3s;
+}
+
+.nav-link:hover {
+    color: #fff;
+    background:rgba(255, 255, 255, 0.10);
+    border-radius: 5px;
+}
+
+.nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.10) !important;
+    font-weight: bold;
+    border-radius: 5px;
+}
+  </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen" x-data="{ sidebarOpen: false }">
 
@@ -81,7 +105,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
           <?php foreach ($menuItems as $item): ?>
             <li>
               <a href="<?= BASE_URL . $item['link'] ?>" 
-                 class="flex items-center space-x-3 text-gray-300 hover:bg-gray-700 p-3 rounded-lg transition-colors">
+                 class="nav-link active flex items-center space-x-3 text-gray-300 p-3 rounded-lg">
                 <i class="<?= $item['icon'] ?> w-5 text-center"></i>
                 <span><?= $item['title'] ?></span>
               </a>
@@ -114,5 +138,22 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
     <?php // Tempat untuk menyisipkan konten halaman ?>
   </main>
 
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".nav-link"); // Pakai titik untuk class
+    const currentPath = window.location.pathname.replace(/\/$/, ""); // Hilangkan slash di akhir
+
+    navLinks.forEach(link => {
+        const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
+
+        if (linkPath === currentPath) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
+});
+  </script>
 </body>
 </html>
