@@ -18,7 +18,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="w-full h-screen flex items-center justify-center">
-        <div class="text-center text-white px-8 py-12">
+        <div class="text-center text-white px-8 py-12 mb-45">
             <!-- Logo Web -->
             <img src="assets/Images/box_icon_126533.ico" alt="Website Logo" class="mx-auto w-30 h-auto mb-6">
             
@@ -31,10 +31,10 @@
 
 
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-800">
-        <div class="max-w-7xl mx-auto text-center">
+    <section id="features" class="py-85 bg-gray-800">
+        <div class="max-w-9xl py-auto mx-20 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-12">Key Features</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12">
                 <div class="bg-gray-700 p-8 rounded-lg shadow-lg hover:bg-gray-600">
                     <i class="fas fa-box text-4xl text-blue-400 mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Product Management</h3>
