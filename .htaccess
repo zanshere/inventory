@@ -42,6 +42,10 @@ RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
     Header set Cache-Control "max-age=31536000, public"
 </FilesMatch>
 
+# Menambahkan file css dan js
+AddType text/css .css
+AddType application/javascript .js
+
 # Amankan file .htaccess dan lainnya
 <Files .htaccess>
     Order Allow,Deny
