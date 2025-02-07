@@ -28,31 +28,17 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
   <!-- Alpine.js -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- CSS -->
-  <style>
-    .nav-link {
-    color: #ccc;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    transition: color 0.3s, background 0.3s;
-}
-
-.nav-link:hover {
-    color: #fff;
-    background:rgba(255, 255, 255, 0.10);
-    border-radius: 5px;
-}
-
-.nav-link.active {
-    color: #fff !important;
-    background: rgba(255, 255, 255, 0.10) !important;
+   <style>
+    .nav-link.active {
+    color: white;
     font-weight: bold;
     border-radius: 5px;
 }
-  </style>
+   </style>
 </head>
-<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen" x-data="{ sidebarOpen: false }">
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen" 
+      x-data="{ sidebarOpen: localStorage.getItem('sidebarOpen') === 'true' }" 
+      x-init="$watch('sidebarOpen', value => localStorage.setItem('sidebarOpen', value))">
 
   <!-- Navbar -->
   <nav class="bg-gray-800 p-4 flex justify-between items-center">
@@ -63,7 +49,8 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
       <span class="text-white font-bold text-xl"> Retail Inventory</span>
     </div>
     <!-- Tombol Menu -->
-    <button @click="sidebarOpen = true" class="text-white focus:outline-none">
+    <button @click="sidebarOpen = !sidebarOpen"
+        class="text-white focus:outline-none">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
@@ -93,9 +80,10 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
          x-transition:leave-end="translate-x-full"
          class="relative bg-gray-800 w-64 h-full p-6 ml-auto">
       <!-- Tombol Tutup Sidebar -->
-      <button @click="sidebarOpen = false" class="absolute top-4 left-4 text-gray-400 hover:text-white focus:outline-none">
+      <button @click="sidebarOpen = !sidebarOpen; localStorage.setItem('sidebarOpen', sidebarOpen)"
+        class="text-white focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
       
@@ -105,7 +93,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
           <?php foreach ($menuItems as $item): ?>
             <li>
               <a href="<?= BASE_URL . $item['link'] ?>" 
-                 class="nav-link active flex items-center space-x-3 text-gray-300 p-3 rounded-lg">
+                 class="nav-link active flex items-center space-x-3 text-gray-400 hover:text-white p-3 rounded-lg transition-colors">
                 <i class="<?= $item['icon'] ?> w-5 text-center"></i>
                 <span><?= $item['title'] ?></span>
               </a>
@@ -114,7 +102,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
           <!-- Tampilkan tombol Logout -->
           <li>
             <a href="<?= BASE_URL ?>/auth/logout.php" 
-               class="flex items-center space-x-3 text-red-400 hover:bg-gray-700 p-3 rounded-lg transition-colors">
+               class="flex items-center space-x-3 text-red-400 hover:text-red-600 p-3 rounded-lg transition-colors">
               <i class="fas fa-sign-out-alt w-5 text-center"></i>
               <span>Logout</span>
             </a>
@@ -123,7 +111,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
           <!-- Jika belum login, tampilkan menu Login saja -->
           <li>
             <a href="<?= BASE_URL ?>/auth/login.php" 
-               class="flex items-center space-x-3 text-green-400 hover:bg-gray-700 p-3 rounded-lg transition-colors">
+               class="flex items-center space-x-3 text-green-400 hover:text-green-400 p-3 rounded-lg transition-colors">
               <i class="fas fa-sign-in-alt w-5 text-center"></i>
               <span>Login</span>
             </a>
