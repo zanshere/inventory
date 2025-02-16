@@ -1,58 +1,63 @@
-# Aktifkan mod_rewrite
+# Aktifkan mod_rewrite dan tetapkan basis URL
 RewriteEngine On
+RewriteBase /inventori-dashboard/
 
-# Pengaturan ErrorDocument
-# Menggunakan wildcard untuk mencakup semua kode error
-ErrorDocument 400 /git-project/inventory/error.php?code=400
-ErrorDocument 401 /git-project/inventory/error.php?code=401
-ErrorDocument 402 /git-project/inventory/error.php?code=402
-ErrorDocument 403 /git-project/inventory/error.php?code=403
-ErrorDocument 404 /git-project/inventory/error.php?code=404
-ErrorDocument 405 /git-project/inventory/error.php?code=405
-ErrorDocument 406 /git-project/inventory/error.php?code=406
-ErrorDocument 407 /git-project/inventory/error.php?code=407
-ErrorDocument 408 /git-project/inventory/error.php?code=408
-ErrorDocument 409 /git-project/inventory/error.php?code=409
-ErrorDocument 410 /git-project/inventory/error.php?code=410
-ErrorDocument 429 /git-project/inventory/error.php?code=429
-ErrorDocument 500 /git-project/inventory/error.php?code=500
-ErrorDocument 501 /git-project/inventory/error.php?code=501
-ErrorDocument 502 /git-project/inventory/error.php?code=502
-ErrorDocument 503 /git-project/inventory/error.php?code=503
-ErrorDocument 504 /git-project/inventory/error.php?code=504
-ErrorDocument 508 /git-project/inventory/error.php?code=508
+# ----------------------------------------------------------------
+# Pengaturan ErrorDocument (pastikan file error.php ada di root)
+ErrorDocument 400 /inventori-dashboard/error.php?code=400
+ErrorDocument 401 /inventori-dashboard/error.php?code=401
+ErrorDocument 402 /inventori-dashboard/error.php?code=402
+ErrorDocument 403 /inventori-dashboard/error.php?code=403
+ErrorDocument 404 /inventori-dashboard/error.php?code=404
+ErrorDocument 405 /inventori-dashboard/error.php?code=405
+ErrorDocument 406 /inventori-dashboard/error.php?code=406
+ErrorDocument 407 /inventori-dashboard/error.php?code=407
+ErrorDocument 408 /inventori-dashboard/error.php?code=408
+ErrorDocument 409 /inventori-dashboard/error.php?code=409
+ErrorDocument 410 /inventori-dashboard/error.php?code=410
+ErrorDocument 429 /inventori-dashboard/error.php?code=429
+ErrorDocument 500 /inventori-dashboard/error.php?code=500
+ErrorDocument 501 /inventori-dashboard/error.php?code=501
+ErrorDocument 502 /inventori-dashboard/error.php?code=502
+ErrorDocument 503 /inventori-dashboard/error.php?code=503
+ErrorDocument 504 /inventori-dashboard/error.php?code=504
+ErrorDocument 508 /inventori-dashboard/error.php?code=508
 
-# Memastikan error.php tidak ikut diproses oleh rewrite
-RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
+# Jangan proses error.php dengan aturan rewrite
+RewriteCond %{REQUEST_URI} !^/inventori-dashboard/error\.php$ [NC]
 
-# Trigger error 404 jika kondisi tertentu terpenuhi
-# Gunakan ini hanya jika benar-benar ingin mengarahkan semua akses ke error page
-# Hati-hati dengan rule ini, pastikan hanya dipakai dalam kondisi yang tepat
-# RewriteRule ^ - [R=408,L] 
+# ----------------------------------------------------------------
+# (Opsional) Maintenance Mode:
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$ [NC]
+# Jika maintenance mode diaktifkan, uncomment baris berikut:
+# RewriteRule ^ /inventori-dashboard/maintenance.html [R=503,L]
 
-# Maintenance Mode - Mengaktifkan mode pemeliharaan untuk mencegah akses dari pengunjung
-# Komentar baris ini jika tidak sedang dalam pemeliharaan
- RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$ [NC]
- RewriteCond %{REMOTE_ADDR} !^182\.3\.43\.189$ [NC]  # Ganti dengan IP yang diizinkan
-# RewriteRule ^ /git-project/inventory/maintenance.html [R=503,L]
+# ----------------------------------------------------------------
+# Routing & Clean URL: Arahkan semua request ke index.php jika file atau folder tidak ada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/?$ index.php?url=$1 [QSA,L]
 
-# Caching Rules untuk mengurangi beban server (opsional)
-# Caching untuk file statis seperti gambar, CSS, dan JS
+# ----------------------------------------------------------------
+# Caching untuk file statis (gambar, CSS, JS, font, dll.)
 <FilesMatch "\.(jpg|jpeg|png|gif|css|js|woff|woff2|ttf|svg|eot)$">
     Header set Cache-Control "max-age=31536000, public"
 </FilesMatch>
 
-# Menambahkan file css dan js
+# ----------------------------------------------------------------
+# Tipe MIME untuk CSS & JS
 AddType text/css .css
 AddType application/javascript .js
 
-# Amankan file .htaccess dan lainnya
-<Files .htaccess>
+# ----------------------------------------------------------------
+# Lindungi file konfigurasi (.htaccess, dsb.)
+<Files ~ "^\.ht">
     Order Allow,Deny
     Deny from all
 </Files>
 
-# Mengaktifkan mod_headers untuk menambah kontrol atas headers
+# ----------------------------------------------------------------
+# Header Keamanan
 Header set X-Content-Type-Options "nosniff"
 Header set X-Frame-Options "SAMEORIGIN"
 Header set X-XSS-Protection "1; mode=block"
