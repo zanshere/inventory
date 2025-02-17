@@ -1,37 +1,8 @@
 <?php
 session_start();
 include '../includes/connect.php';
-
-// Fungsi untuk memeriksa apakah pengguna sedang diban
-function isUserBanned($conn, $email) {
-    $query = "SELECT banned_until FROM users WHERE email = '$email'";
-    $result = $conn->query($query);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if ($row['banned_until'] && strtotime($row['banned_until']) > time()) {
-            return true; // Pengguna masih diban
-        }
-    }
-    return false; // Pengguna tidak diban
-}
-
-// Fungsi untuk menambah jumlah percobaan gagal
-function incrementFailedAttempts($conn, $email) {
-    $query = "UPDATE users SET failed_attempts = failed_attempts + 1 WHERE email = '$email'";
-    $conn->query($query);
-
-    // Jika percobaan gagal lebih dari 5 kali, ban pengguna selama 15 menit
-    $checkAttemptsQuery = "SELECT failed_attempts FROM users WHERE email = '$email'";
-    $result = $conn->query($checkAttemptsQuery);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if ($row['failed_attempts'] >= 5) {
-            $banUntil = date('Y-m-d H:i:s', strtotime('+5 minutes'));
-            $banQuery = "UPDATE users SET banned_until = '$banUntil' WHERE email = '$email'";
-            $conn->query($banQuery);
-        }
-    }
-}
+include '../functions/isUserBanned.php';
+include '../functions/incrementFailedAttempts.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
