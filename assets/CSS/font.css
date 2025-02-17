@@ -1,8 +1,64 @@
-/* Font Google */
-@import url('https://fonts.googleapis.com/css2?family=Cagliostro&family=Funnel+Display:wght@300..800&family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Outfit:wght@100..900&family=Playwrite+DE+Grund:wght@100..400&family=Varela+Round&display=swap');
-
+/* Pilih Font Yang Diinginkan */
+/* Cukup Atur Font Yang Ingin Digunakan Disini */
 * {
-    font-family: "Varela Round", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+  font-family: Lexend, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+/* Daftar Font */
+@font-face {
+  font-family: Cagliostro;
+  src: url(../fonts/Cagliostro/Cagliostro-Regular.ttf) format(ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Funnel_Display;
+  src: url(../fonts/Cagliostro/Funnel_Display/FunnelDisplay-VariableFont_wght.ttf) format(ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Jost;
+  src: url(../fonts/Jost/Jost-Italic-VariableFont_wght.ttf) format(ttf),
+       url(../fonts/Jost/Jost-VariableFont_wght.ttf) format(ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Lexend;
+  src: url(../fonts/Lexend/Lexend-VariableFont_wght.ttf) format(ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Noto Sans Mono;
+  src: url(../fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wght.ttf) format(ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Outfit;
+  src: url(../fonts/Outfit/Outfit-VariableFont_wght.ttf) format(ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Playwrite De Grund;
+  src: url(../fonts/Playwrite_DE_Grund/Playwrite_DE_Grund-VariableFont_wght.ttf) format(ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Varela Round;
+  src: url(../fonts/Varela_Round/VarelaRound-VariableFont_wght.ttf) format(ttf);
+  font-weight: normal;
+  font-style: normal;
+}
