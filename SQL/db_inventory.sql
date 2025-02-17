@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 17 Feb 2025 pada 15.44
+-- Waktu pembuatan: 17 Feb 2025 pada 15.47
 -- Versi server: 9.2.0
 -- Versi PHP: 8.3.16
 
@@ -75,7 +75,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `full_name`, `failed_attempts`, `banned_until`, `role`, `created_at`) VALUES
 (1, 'admin', '$2a$12$8rsJGxWbISklitcWmDGOZOG9SR5UNJutI.1ErewxlU32vv2pU2RKq', 'admin@gmail.com', 'Admin', 0, NULL, 'admin', '2025-02-04 17:09:53'),
-(2, 'zanshere', '$2y$10$yTsICvg1Ay6RYfd7NCzbfOD6q/ANbPWTi60Ou9X00Bb.8A10wMiFq', 'fauzan224321@gmail.com', 'Muhammad Fauzan', 0, NULL, 'user', '2025-02-04 17:10:32');
+(2, 'zanshere', '$2y$10$yTsICvg1Ay6RYfd7NCzbfOD6q/ANbPWTi60Ou9X00Bb.8A10wMiFq', 'fauzan224321@gmail.com', 'Muhammad Fauzan', 0, NULL, 'user', '2025-02-04 17:10:32'),
+(3, 'staff', '$2y$10$V491cNvH6yF/gVqYw/Fiwu/QrL43iX8GWUmnjSSz2dDabYzJRqs8C', 'staff@gmail.com', 'Staff', 0, NULL, 'staff', '2025-02-17 15:46:43');
 
 --
 -- Indexes for dumped tables
