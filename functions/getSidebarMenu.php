@@ -4,11 +4,9 @@ function getSidebarMenu($role) {
     $menus = [
         'admin' => [
             ['title' => 'Home', 'icon' => 'fas fa-home', 'link' => '/pages/admin/dashboard.php'],
-            ['title' => 'Products', 'icon' => 'fas fa-boxes', 'link' => '/pages/admin/manage_products.php'],
-            ['title' => 'Inventory', 'icon' => 'fas fa-box-open', 'link' => '/pages/admin/manage_inventory.php'],
-            ['title' => 'Orders', 'icon' => 'fas fa-shopping-cart', 'link' => '/pages/admin/manage_orders.php'],
-            ['title' => 'Customers', 'icon' => 'fas fa-users', 'link' => '/pages/admin/manage_customers.php'],
-            ['title' => 'Control Account', 'icon' => 'fas fa-cogs', 'link' => '/pages/admin/control_account.php']
+            ['title' => 'Manage Inventory', 'icon' => 'fas fa-box-open', 'link' => '/pages/admin/manage_inventory.php'],
+            ['title' => 'Manage User', 'icon' => 'fas fa-cogs', 'link' => '/pages/admin/manage_users.php'],
+            ['title' => 'Report', 'icon' => 'fas fa-boxes', 'link' => '/pages/admin/report.php']
         ],
         'staff' => [
             ['title' => 'Home', 'icon' => 'fas fa-home', 'link' => '/pages/staff/dashboard.php'],
