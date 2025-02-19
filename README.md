@@ -19,19 +19,20 @@ Teknologi utama yang digunakan:
 /inventori-dashboard
 │
 ├── 📁 assets
-│   ├── 📁 css        # File CSS kustom
-│   ├── 📁 js         # File JavaScript
-│   └── 📁 images     # Aset gambar
+│   ├── 📁 CSS        # File CSS kustom
+│   ├── 📁 fonts         # File Font
+│   ├── 📁 Images         # Asset Gambar
+│   └── 📁 JS     # File Javascript
 │
 ├── 📁 functions      # Fungsi utilitas
 │   ├── getSidebarMenu.php
-│   ├── isUserBanned.php
-│   └── ...
+│   ├── incrementFailedAttempts.php
+│   └── isUserBanned.php
 │
 ├── 📁 includes       # File inklusi global
-│   ├── db_connect.php
-│   ├── header.php
-│   └── footer.php
+│   ├── connect.php
+│   ├── footer.php
+│   └── header.php
 │
 ├── 📁 pages          # Halaman berdasarkan role
 │   ├── 📁 admin      # Dashboard admin
@@ -44,6 +45,7 @@ Teknologi utama yang digunakan:
 │   └── logout.php
 │
 ├── 📄 index.php      # Entry point aplikasi
+├── 📄 error.php      # Halaman Error
 └── 📄 .htaccess      # Konfigurasi server
 ```
 
@@ -80,7 +82,7 @@ cd inventory
 
 #### 🌐 Jalankan aplikasi
 1. Pindahkan folder proyek ke direktori web server.
-2. Buka di browser: [http://localhost/inventory](http://localhost/inventory)
+2. Buka di browser: [http://localhost/path_to_your_directory](http://localhost/path_to_your_directory)
 
 ## ❓ Bantuan
 Untuk pertanyaan atau masukan, silakan hubungi:
