@@ -59,7 +59,7 @@ Teknologi utama yang digunakan:
 | **Muhammad Raihan Ramadhan** | 🎨 Frontend Dev | Implementasi Responsif |
 
 ## 📜 Lisensi
-Proyek ini dilisensikan di bawah **Apache License 2.0**.
+Proyek ini dilisensikan di bawah **MIT License**.
 
 ## 🚀 Instalasi
 
