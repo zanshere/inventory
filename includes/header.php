@@ -21,6 +21,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/git-project/inventory/">
   <!-- Icon Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Tailwind CSS -->
@@ -28,7 +29,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
   <!-- Alpine.js -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Font -->
-   <link rel="stylesheet" href="../assets/CSS/font.css">
+   <link rel="stylesheet" href="assets/CSS/font.css">
   <!-- CSS -->
    <style>
     .nav-link.active {
@@ -45,9 +46,9 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
   <!-- Navbar -->
   <nav class="bg-gray-800 p-4 flex justify-between items-center">
     <!-- Logo dan Nama Website -->
-    <div class="flex items-center space-x-3">
+    <div class="flex items-center space-x-1">
       <!-- Ganti 'path/to/logo.png' dengan path ke logo Anda -->
-      <img src="../assets/Images/box_icon_126533.ico" alt="Logo" class="w-8 h-8">
+      <img src="assets/Images/Logo.png" alt="Logo" class="w-10 h-10">
       <span class="text-white font-bold text-xl"> Retail Inventory</span>
     </div>
     <!-- Tombol Menu -->
