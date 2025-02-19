@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/git-project/inventory/">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <footer class="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 py-10 px-10 font-sans tracking-wide">
       <div class="max-w-2xl mx-auto text-center">
-        <a href='javascript:void(0)' class="inline-block"><img src="https://readymadeui.com/readymadeui-light.svg" alt="logo"
-          class='w-44' /></a>
+        <a href='javascript:void(0)' class="inline-block"><img src="assets/Images/logo-removebg.png" alt="logo"
+          class='w-70' /></a>
         <p class="text-sm mt-8 text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida,
           mi eu pulvinar cursus, sem elit interdum mauris dipiscing elit. Aenean gravida,
-          mi eu pulvinar cursus. <a href='javascript:void(0)' class="text-sm font-semibold text-blue-500">Read
-            more...</a></p>
+          mi eu pulvinar cursus.</p>
 
         <ul class="flex flex-wrap justify-center gap-6 mt-8">
           <li>
@@ -66,7 +66,7 @@
         </ul>
       </div>
 
-      <ul class="grid max-sm:grid-cols-1 max-lg:grid-cols-2 lg:grid-cols-4 gap-12 mt-20">
+      <ul class="grid max-sm:grid-cols-1 max-lg:grid-cols-2 lg:grid-cols-4 gap-18 mt-20">
         <li class="flex items-center">
           <div class="bg-gray-900 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill='#007bff' viewBox="0 0 482.6 482.6">
