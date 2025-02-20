@@ -2,6 +2,7 @@
 session_start();
 include '../../includes/connect.php';
 include '../../functions/isUserBanned.php';
+include '../../functions/errorControllers.php';
 
 $sidebarContent = '
     <ul class="space-y-4">

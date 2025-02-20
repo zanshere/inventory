@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../includes/connect.php';
+include '../../functions/errorControllers.php';
 
 // Jika perlu, tambahkan pengecekan login (misalnya: jika tidak login, redirect ke login.php)
 // if (!isset($_SESSION['user_id'])) {
