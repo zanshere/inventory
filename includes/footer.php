@@ -10,7 +10,7 @@
 <body>
 <footer class="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 py-10 px-10 font-sans tracking-wide">
       <div class="max-w-2xl mx-auto text-center">
-        <a href='javascript:void(0)' class="inline-block"><img src="assets/Images/logo-removebg.png" alt="logo"
+        <a href='javascript:void(0)' class="inline-block"><img src="assets/Images/logo-removebg-white-edition.png" alt="logo"
           class='w-70' /></a>
         <p class="text-sm mt-8 text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida,
           mi eu pulvinar cursus, sem elit interdum mauris dipiscing elit. Aenean gravida,
