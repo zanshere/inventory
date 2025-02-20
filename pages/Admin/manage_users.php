@@ -305,7 +305,7 @@ if ($search !== '') {
         <!-- Pagination Navigation -->
         <div class="mt-4 flex justify-center space-x-2">
           <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-            <a href="?<?= ($search !== '' ? "search=" . urlencode($search) . "&" : "") . "limit=" . $perPage . "&page=" . $i ?>" 
+            <a href="pages/Admin/manage_users.php?<?= ($search !== '' ? "search=" . urlencode($search) . "&" : "") . "limit=" . $perPage . "&page=" . $i ?>" 
                class="px-3 py-1 rounded <?php if ($i == $page) echo 'bg-blue-500'; else echo 'bg-gray-500 hover:bg-gray-600'; ?>">
               <?= $i ?>
             </a>
