@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 // Untuk non-admin, default limit adalah 5; untuk admin, default limit adalah 10.
 $defaultLimit = 5;
 if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-    $defaultLimit = 10;
+    $defaultLimit = 5;
 }
 
 $perPage = $defaultLimit;
@@ -223,25 +223,25 @@ if ($search !== '') {
           <table class="w-full text-white border-collapse">
             <thead class="bg-white/20">
               <tr>
-                <th class="p-3 text-left rounded-tl-xl">No</th>
-                <th class="p-3 text-left">Username</th>
-                <th class="p-3 text-left">Nama Lengkap</th>
-                <th class="p-3 text-left">Email</th>
-                <th class="p-3 text-left">Role</th>
-                <th class="p-3 text-left">Status</th>
-                <th class="p-3 text-left rounded-tr-xl">Aksi</th>
+                <th class="p-3 text-center rounded-tl-xl">No</th>
+                <th class="p-3 text-center">Username</th>
+                <th class="p-3 text-center">Nama Lengkap</th>
+                <th class="p-3 text-center">Email</th>
+                <th class="p-3 text-center">Role</th>
+                <th class="p-3 text-center">Status</th>
+                <th class="p-3 text-center rounded-tr-xl">Aksi</th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($users as $index => $user): ?>
               <!-- Simpan full_name sebagai data attribute -->
               <tr class="hover:bg-white/5 transition-colors" data-full_name="<?= htmlspecialchars($user['full_name']) ?>">
-                <td class="p-3"><?= $offset + $index + 1 ?></td>
-                <td class="p-3"><?= htmlspecialchars($user['username']) ?></td>
-                <td class="p-3"><?= htmlspecialchars($user['full_name']) ?></td>
-                <td class="p-3"><?= htmlspecialchars($user['email']) ?></td>
-                <td class="p-3"><?= htmlspecialchars($user['role']) ?></td>
-                <td class="p-3">
+                <td class="p-3 text-center"><?= $offset + $index + 1 ?></td>
+                <td class="p-3 text-center"><?= htmlspecialchars($user['username']) ?></td>
+                <td class="p-3 text-center"><?= htmlspecialchars($user['full_name']) ?></td>
+                <td class="p-3 text-center"><?= htmlspecialchars($user['email']) ?></td>
+                <td class="p-3 text-center"><?= htmlspecialchars($user['role']) ?></td>
+                <td class="p-3 text-center">
                   <?php if ($user['is_active'] == 0): ?>
                     <span class="text-red-500 flex items-center">
                       <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
