@@ -21,7 +21,7 @@
   <section id="home" class="w-full h-screen flex items-center justify-center bg-gray-900">
     <div class="text-center text-white px-8 py-12">
       <!-- Logo Web -->
-      <img src="assets/Images/logo-removebg.png" alt="Website Logo" class="mx-auto w-80 h-auto">
+      <img src="assets/Images/logo-removebg-white-edition.png" alt="Website Logo" class="mx-auto w-100 h-auto">
       <!-- Main Heading and Text -->
       <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Simplify Your Business Inventory</h1>
       <p class="text-lg mb-6 max-w-2xl mx-auto">
