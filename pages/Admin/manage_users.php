@@ -182,6 +182,11 @@ if ($search !== '') {
 </head>
 <body class="bg-gray-900 text-white overflow-hidden">
 
+<?php if (isset($_SESSION['alert'])): ?> 
+  <script> Swal.fire({ icon: 'success', title: 'Berhasil', text: <?= json_encode($_SESSION['alert']) ?> });</script>
+<?php unset($_SESSION['alert']); ?> 
+<?php endif; ?>
+
   <!-- Header (pastikan header tidak membatasi akses halaman ini) -->
   <?php include '../../includes/header.php'; ?>
 
@@ -305,7 +310,7 @@ if ($search !== '') {
         <!-- Pagination Navigation -->
         <div class="mt-4 flex justify-center space-x-2">
           <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-            <a href="pages/Admin/manage_users.php?<?= ($search !== '' ? "search=" . urlencode($search) . "&" : "") . "limit=" . $perPage . "&page=" . $i ?>" 
+            <a href="?<?= ($search !== '' ? "search=" . urlencode($search) . "&" : "") . "limit=" . $perPage . "&page=" . $i ?>" 
                class="px-3 py-1 rounded <?php if ($i == $page) echo 'bg-blue-500'; else echo 'bg-gray-500 hover:bg-gray-600'; ?>">
               <?= $i ?>
             </a>
