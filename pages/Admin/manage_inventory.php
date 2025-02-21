@@ -67,16 +67,26 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
   <!-- DataTables Buttons CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  
   <!-- DataTables JS -->
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  
   <!-- DataTables Buttons JS -->
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+  
+  <!-- Tambahan dependensi untuk ekspor Excel & PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
   <style>
     .swal2-popup {
       background: #1F2937 !important;
@@ -141,7 +151,9 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
                       class="bg-red-500 hover:bg-red-600 px-3 py-2 rounded-lg transition-colors">
                       <i class="fas fa-trash"></i>
                     </button>
-                    <button id="saveDataBtn" onclick="showSaveOptions()" class="bg-indigo-500 hover:bg-indigo-600 px-3 py-2 rounded-lg transition-color"><i class="fas fa-download"></i></button>
+                    <button id="saveDataBtn" onclick="showSaveOptions()" class="bg-indigo-500 hover:bg-indigo-600 px-3 py-2 rounded-lg transition-colors">
+                      <i class="fas fa-download"></i>
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -222,7 +234,7 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
       Swal.close();
     }
 
-    // Fungsi Edit: Memperbaiki pencarian item berdasarkan ID dengan perbandingan numerik
+    // Fungsi Edit: Mencari item berdasarkan ID dengan perbandingan numerik
     function showEditForm(itemId) {
       const items = <?= json_encode($items) ?>;
       const item = items.find(i => parseInt(i.id) === parseInt(itemId));
@@ -256,13 +268,13 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label class="block mb-2 text-gray-300">Stok</label>
-                <input type="text" type="numeric" name="stok" value="${item.stok}"
+                <input type="number" name="stok" value="${item.stok}"
                   class="w-full p-2 rounded bg-gray-700 text-white" required>
               </div>
               
               <div>
                 <label class="block mb-2 text-gray-300">Harga</label>
-                <input type="text" type="numeric" name="harga" value="${item.harga}"
+                <input type="number" name="harga" value="${item.harga}"
                   class="w-full p-2 rounded bg-gray-700 text-white" required>
               </div>
             </div>
