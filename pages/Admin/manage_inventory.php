@@ -323,7 +323,7 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
     // Fungsi untuk menghapus item dengan SweetAlert2
     function deleteItem(itemId) {
       Swal.fire({
-        title: 'HAPUS BARANG?',
+        title: 'Hapus Barang?',
         text: "Data yang dihapus tidak dapat dikembalikan!",
         icon: 'warning',
         showCancelButton: true,
