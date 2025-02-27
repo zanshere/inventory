@@ -78,7 +78,7 @@ cd inventory
 
 #### 🔧 Setup database
 1. Import file SQL dari direktori `sql/`
-2. Konfigurasi koneksi database di `includes/db_connect.php`
+2. Konfigurasi koneksi database di `includes/connect.php`
 
 #### 🌐 Jalankan aplikasi
 1. Pindahkan folder proyek ke direktori web server.
