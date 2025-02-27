@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 // ---------------------
 // Pagination & Search
 // ---------------------
-// Untuk non-admin, default limit adalah 5; untuk admin, default limit adalah 10.
+// Untuk non-admin, default limit adalah 5; untuk admin, default limit adalah 5.
 $defaultLimit = 5;
 if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
     $defaultLimit = 5;
@@ -182,13 +182,16 @@ if ($search !== '') {
 <?php unset($_SESSION['alert']); ?> 
 <?php endif; ?>
 
-  <!-- Header (pastikan header tidak membatasi akses halaman ini) -->
+  <!-- Header -->
   <?php include '../../includes/header.php'; ?>
 
-  <!-- Wrapper untuk center konten secara vertikal dan horizontal -->
+  <!-- Wrapper untuk center konten -->
   <div class="flex items-center justify-center min-h-screen">
     <div class="container mx-auto p-6">
-      <!-- Form Pencarian dan Dropdown Limit (dropdown hanya muncul jika admin) -->
+      <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 shadow-lg">
+        <h1 class="text-2xl font-bold text-white mb-6 text-center">Manajemen Pengguna</h1>
+        <hr class="p-4">
+      <!-- Form Pencarian dan Dropdown Limit -->
       <div class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between">
         <form method="GET" action="" class="flex flex-col md:flex-row md:items-center">
           <input type="text" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Cari username..."
@@ -209,49 +212,46 @@ if ($search !== '') {
           <?php endif; ?>
         </form>
       </div>
-
-      <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 shadow-lg">
-        <h1 class="text-2xl font-bold text-white mb-6 text-center">Manajemen Pengguna</h1>
         
+        <!-- Tabel Manajemen Pengguna -->
         <div class="overflow-x-auto">
-          <table class="w-full text-white border-collapse">
-            <thead class="bg-white/20">
+          <table class="min-w-full divide-y divide-gray-700 text-white">
+            <thead class="bg-gray-800">
               <tr>
-                <th class="p-3 text-center rounded-tl-xl">No</th>
-                <th class="p-3 text-center">Username</th>
-                <th class="p-3 text-center">Nama Lengkap</th>
-                <th class="p-3 text-center">Email</th>
-                <th class="p-3 text-center">Role</th>
-                <th class="p-3 text-center">Status</th>
-                <th class="p-3 text-center rounded-tr-xl">Aksi</th>
+                <th scope="col" class="px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">No</th>
+                <th scope="col" class="px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">Username</th>
+                <th scope="col" class="px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">Nama Lengkap</th>
+                <th scope="col" class="px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">Email</th>
+                <th scope="col" class="px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">Role</th>
+                <th scope="col" class="px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">Status</th>
+                <th scope="col" class="px-6 py-3 text-center text-sm font-medium uppercase tracking-wider">Aksi</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-gray-900 divide-y divide-gray-700">
               <?php foreach ($users as $index => $user): ?>
-              <!-- Simpan full_name sebagai data attribute -->
-              <tr class="hover:bg-white/5 transition-colors" data-full_name="<?= htmlspecialchars($user['full_name']) ?>">
-                <td class="p-3 text-center"><?= $offset + $index + 1 ?></td>
-                <td class="p-3 text-center"><?= htmlspecialchars($user['username']) ?></td>
-                <td class="p-3 text-center"><?= htmlspecialchars($user['full_name']) ?></td>
-                <td class="p-3 text-center"><?= htmlspecialchars($user['email']) ?></td>
-                <td class="p-3 text-center"><?= htmlspecialchars($user['role']) ?></td>
-                <td class="p-3 text-center">
+              <tr data-full_name="<?= htmlspecialchars($user['full_name']) ?>" class="hover:bg-gray-700 transition-colors">
+                <td class="px-6 py-4 text-center"><?= $offset + $index + 1 ?></td>
+                <td class="px-6 py-4 text-center"><?= htmlspecialchars($user['username']) ?></td>
+                <td class="px-6 py-4 text-center"><?= htmlspecialchars($user['full_name']) ?></td>
+                <td class="px-6 py-4 text-center"><?= htmlspecialchars($user['email']) ?></td>
+                <td class="px-6 py-4 text-center"><?= htmlspecialchars($user['role']) ?></td>
+                <td class="px-6 py-4 text-center">
                   <?php if ($user['is_active'] == 0): ?>
-                    <span class="text-red-500 flex items-center">
+                    <span class="text-red-500 flex items-center justify-center">
                       <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 18a8 8 0 100-16 8 8 0 000 16z"/>
                       </svg>
                       Nonaktif
                     </span>
                   <?php elseif ($user['suspend_until'] && strtotime($user['suspend_until']) > time()): ?>
-                    <span class="text-red-500 flex items-center">
+                    <span class="text-yellow-500 flex items-center justify-center">
                       <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368z"/>
                       </svg>
                       Suspended
                     </span>
                   <?php else: ?>
-                    <span class="text-green-500 flex items-center">
+                    <span class="text-green-500 flex items-center justify-center">
                       <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586l-2.293-2.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"/>
                       </svg>
@@ -259,8 +259,8 @@ if ($search !== '') {
                     </span>
                   <?php endif; ?>
                 </td>
-                <td class="p-3">
-                  <div class="flex flex-wrap gap-2">
+                <td class="px-6 py-4 text-center">
+                  <div class="flex flex-wrap justify-center gap-2">
                     <button onclick="showEditForm(<?= $user['id'] ?>)" class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded flex items-center">
                       <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
@@ -274,19 +274,19 @@ if ($search !== '') {
                       Suspend
                     </button>
                     <?php if ($user['is_active'] == 1): ?>
-                      <button onclick="deactivateUser(<?= $user['id'] ?>)" class="bg-indigo-500 hover:bg-indigo-600 px-3 py-1 rounded flex items-center">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-1.414 1.414M6.343 17.657l-1.414 1.414M18.364 18.364l-1.414-1.414M6.343 6.343L4.93 7.757M12 8v4m0 4h.01"/>
-                        </svg>
-                        Nonaktif
-                      </button>
+                    <button onclick="deactivateUser(<?= $user['id'] ?>)" class="bg-indigo-500 hover:bg-indigo-600 px-3 py-1 rounded flex items-center">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-1.414 1.414M6.343 17.657l-1.414 1.414M18.364 18.364l-1.414-1.414M6.343 6.343L4.93 7.757M12 8v4m0 4h.01"/>
+                      </svg>
+                      Nonaktif
+                    </button>
                     <?php else: ?>
-                      <button onclick="activateUser(<?= $user['id'] ?>)" class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded flex items-center">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        Aktifkan
-                      </button>
+                    <button onclick="activateUser(<?= $user['id'] ?>)" class="bg-green-500 hover:bg-green-600 px-3 py-1 rounded flex items-center">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      Aktifkan
+                    </button>
                     <?php endif; ?>
                     <button onclick="deleteUser(<?= $user['id'] ?>)" class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded flex items-center">
                       <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
