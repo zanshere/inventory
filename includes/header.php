@@ -47,7 +47,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
   <nav class="bg-gray-800 p-4 flex justify-between items-center">
     <!-- Logo dan Nama Website -->
     <div class="flex items-center space-x-1">
-      <img src="assets/Images/Logo.png" alt="Logo" class="w-10 h-10">
+      <img src="/assets/images/Logo.png" alt="Logo" class="w-10 h-10">
       <span class="text-white font-bold text-xl">Retail Inventory</span>
     </div>
     <!-- Tombol Menu -->
