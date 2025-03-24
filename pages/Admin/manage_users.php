@@ -261,11 +261,8 @@ if ($search !== '') {
                 </td>
                 <td class="px-6 py-4 text-center">
                   <div class="flex flex-wrap justify-center gap-2">
-                    <button onclick="showEditForm(<?= $user['id'] ?>)" class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-                      </svg>
-                      Edit
+                    <button onclick="showEditForm(<?= $user['id'] ?>)" class="text-blue-500 hover:text-blue-700">
+                        <i class="fas fa-edit"></i> Edit
                     </button>
                     <button onclick="suspendUser(<?= $user['id'] ?>)" class="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded flex items-center">
                       <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
