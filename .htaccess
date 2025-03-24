@@ -1,63 +1,90 @@
-# Aktifkan mod_rewrite dan tetapkan basis URL
+# -------------------------------
+# Aktifkan mod_rewrite
 RewriteEngine On
-RewriteBase /git-project/inventory/
+RewriteBase /inventory/
 
-# ----------------------------------------------------------------
-# Pengaturan ErrorDocument (pastikan file error.php ada di root)
-ErrorDocument 400 /git-project/inventory/error.php?code=400
-ErrorDocument 401 /git-project/inventory/error.php?code=401
-ErrorDocument 402 /git-project/inventory/error.php?code=402
-ErrorDocument 403 /git-project/inventory/error.php?code=403
-ErrorDocument 404 /git-project/inventory/error.php?code=404
-ErrorDocument 405 /git-project/inventory/error.php?code=405
-ErrorDocument 406 /git-project/inventory/error.php?code=406
-ErrorDocument 407 /git-project/inventory/error.php?code=407
-ErrorDocument 408 /git-project/inventory/error.php?code=408
-ErrorDocument 409 /git-project/inventory/error.php?code=409
-ErrorDocument 410 /git-project/inventory/error.php?code=410
-ErrorDocument 429 /git-project/inventory/error.php?code=429
-ErrorDocument 500 /git-project/inventory/error.php?code=500
-ErrorDocument 501 /git-project/inventory/error.php?code=501
-ErrorDocument 502 /git-project/inventory/error.php?code=502
-ErrorDocument 503 /git-project/inventory/error.php?code=503
-ErrorDocument 504 /git-project/inventory/error.php?code=504
-ErrorDocument 508 /git-project/inventory/error.php?code=508
+# -------------------------------
+# Redirect www ke non-www (opsional)
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
-# Jangan proses error.php dengan aturan rewrite
-RewriteCond %{REQUEST_URI} !^/git-project/inventory/error\.php$ [NC]
+# -------------------------------
+# Redirect HTTP ke HTTPS (opsional)
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# ----------------------------------------------------------------
-# (Opsional) Maintenance Mode:
-RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$ [NC]
-# Jika maintenance mode diaktifkan, uncomment baris berikut:
-# RewriteRule ^ /git-project/inventory/error.php [R=503,L]
+# -------------------------------
+# Routing halaman Auth (/login, /register, /logout)
+RewriteRule ^(login|register|logout)$ auth/$1.php [L]
 
-# ----------------------------------------------------------------
-# Routing & Clean URL: Arahkan semua request ke index.php jika file atau folder tidak ada
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/?$ index.php?url=$1 [QSA,L]
+# -------------------------------
+# Routing halaman utama
+RewriteRule ^(home)?$ index.php [L]
 
-# ----------------------------------------------------------------
-# Caching untuk file statis (gambar, CSS, JS, font, dll.)
-<FilesMatch "\.(jpg|jpeg|png|gif|css|js|woff|woff2|ttf|svg|eot)$">
-    Header set Cache-Control "max-age=31536000, public"
+# -------------------------------
+# Routing halaman Admin
+RewriteRule ^admin/(dashboard|manage_inventory|manage_users|report)$ pages/Admin/$1.php [L]
+
+# -------------------------------
+# Routing halaman Staff
+RewriteRule ^staff/(dashboard|add_inventory|view_inventory)$ pages/Staff/$1.php [L]
+
+# -------------------------------
+# Routing halaman User
+RewriteRule ^user/(dashboard|view_inventory)$ pages/User/$1.php [L]
+
+# -------------------------------
+# Custom Error Page
+ErrorDocument 400 /error.php?code=400
+ErrorDocument 401 /error.php?code=401
+ErrorDocument 402 /error.php?code=402
+ErrorDocument 403 /error.php?code=403
+ErrorDocument 404 /error.php?code=404
+ErrorDocument 405 /error.php?code=405
+ErrorDocument 406 /error.php?code=406
+ErrorDocument 407 /error.php?code=407
+ErrorDocument 408 /error.php?code=408
+ErrorDocument 409 /error.php?code=409
+ErrorDocument 410 /error.php?code=410
+ErrorDocument 429 /error.php?code=429
+ErrorDocument 500 /error.php?code=500
+ErrorDocument 501 /error.php?code=501
+ErrorDocument 502 /error.php?code=502
+ErrorDocument 503 /error.php?code=503
+ErrorDocument 504 /error.php?code=504
+ErrorDocument 508 /error.php?code=508
+
+# -------------------------------
+# Proteksi file penting (.htaccess, .env, dll.)
+<FilesMatch "^\.">
+    Require all denied
 </FilesMatch>
 
-# ----------------------------------------------------------------
-# Tipe MIME untuk CSS & JS
-AddType text/css .css
-AddType application/javascript .js
+# -------------------------------
+# Header Security (lebih lengkap)
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
 
-# ----------------------------------------------------------------
-# Lindungi file konfigurasi (.htaccess, dsb.)
-<Files ~ "^\.ht">
-    Order Allow,Deny
-    Deny from all
-</Files>
-
-# ----------------------------------------------------------------
-# Header Keamanan
-Header set X-Content-Type-Options "nosniff"
-Header set X-Frame-Options "SAMEORIGIN"
-Header set X-XSS-Protection "1; mode=block"
+# -------------------------------
+# Cache Control untuk performa lebih baik
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 week"
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/javascript "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
