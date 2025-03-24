@@ -28,7 +28,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
   <!-- Alpine.js -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Font -->
-  <link rel="stylesheet" href="assets/CSS/font.css">
+  <link rel="stylesheet" href="/assets/CSS/font.css">
   <!-- CSS -->
   <style>
     /* Elemen dengan x-cloak disembunyikan sebelum Alpine aktif */
