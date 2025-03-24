@@ -59,7 +59,7 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
 
   <div class="container mx-auto px-4 py-8">
     <div class="bg-gray-800 rounded-xl p-6 shadow-2xl">
-      <h1 class="text-3xl font-bold mb-8 text-center">MANAJEMEN INVENTORI</h1>
+      <h1 class="text-3xl font-bold mb-8 text-center">Manajemen Inventory</h1>
 
       <?php if (isset($_SESSION['alert'])): ?>
         <script>
@@ -82,7 +82,7 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
         <table id="inventoryTable" class="w-full">
           <thead class="bg-gray-700">
             <tr>
-              <th class="p-4 text-center">ID</th>
+              <th class="p-4 text-center">No</th>
               <th class="p-4 text-center">Nama Barang</th>
               <th class="p-4 text-center">Kategori</th>
               <th class="p-4 text-center">Stok</th>
@@ -130,7 +130,7 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
     // Fungsi untuk menampilkan form tambah barang menggunakan SweetAlert2
     function showAddForm() {
       Swal.fire({
-        title: 'TAMBAH BARANG',
+        title: 'Tambah Barang',
         html: `
           <form id="addForm" class="text-left space-y-4">
             <input type="hidden" name="action" value="add">
