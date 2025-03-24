@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link rel="shortcut icon" href="/assets/images/box_icon_126533.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/CSS/font.css">
-    <link rel="stylesheet" href="assets/CSS/scrollBar.css">
+    <link rel="stylesheet" href="/assets/CSS/font.css">
 </head>
 <body>
 <!-- Konten utama -->
@@ -235,7 +234,5 @@
     <!-- Footer -->
     <?php include 'includes/footer.php';?>
 
-    <!-- JavaScript -->
-     <script src="/assets/JS/scrollBar.js"></script>
 </body>
 </html>
