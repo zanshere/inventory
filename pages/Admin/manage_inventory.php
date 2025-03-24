@@ -121,7 +121,7 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
         <table id="inventoryTable" class="w-full">
           <thead class="bg-gray-700">
             <tr>
-              <th class="p-4 text-center">ID</th>
+              <th class="p-4 text-center">No</th>
               <th class="p-4 text-center">Nama Barang</th>
               <th class="p-4 text-center">Kategori</th>
               <th class="p-4 text-center">Stok</th>
@@ -132,9 +132,9 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
             </tr>
           </thead>
           <tbody class="bg-gray-900/50">
-            <?php foreach ($items as $item): ?>
+            <?php $i = 1; foreach ($items as $item): ?>
               <tr class="<?= $item['stok'] < 10 ? 'bg-red-900/20' : '' ?> hover:bg-gray-700/50 transition-colors">
-                <td class="p-3 text-center"><?= $item['id'] ?></td>
+                <td class="p-3 text-center"><?= $i++ ?></td>
                 <td class="p-3 text-center"><?= htmlspecialchars($item['nama_barang']) ?></td>
                 <td class="p-3 text-center"><?= htmlspecialchars($item['kategori']) ?></td>
                 <td class="p-3 text-center"><?= $item['stok'] ?></td>
