@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <link rel="shortcut icon" href="assets/Images/box_icon_126533.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/box_icon_126533.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/CSS/font.css">
     <link rel="stylesheet" href="assets/CSS/scrollBar.css">
 </head>
@@ -21,7 +21,7 @@
   <section id="home" class="w-full h-screen flex items-center justify-center bg-gray-900">
     <div class="text-center text-white px-8 py-12">
       <!-- Logo Web -->
-      <img src="assets/Images/logo-removebg-white-edition.png" alt="Website Logo" class="mx-auto w-100 h-auto">
+      <img src="/assets/images/logo-removebg-white-edition.png" alt="Website Logo" class="mx-auto w-100 h-auto">
       <!-- Main Heading and Text -->
       <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Simplify Your Business Inventory</h1>
       <p class="text-lg mb-6 max-w-2xl mx-auto">
