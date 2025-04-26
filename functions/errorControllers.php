@@ -10,3 +10,5 @@ if (! isset($_SESSION['user_id'])) {
 
 // Ambil role dari session
 $role = $_SESSION['role'] ?? 'user';
+
+?>
