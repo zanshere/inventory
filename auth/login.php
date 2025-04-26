@@ -174,9 +174,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
                 
         <button type="submit" 
-                class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out">
+                class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 mb-4 rounded-lg transition duration-300 ease-in-out">
           Confirm
         </button>
+
+        <a href="../index.php" 
+          class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out block text-center focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2">
+            Back
+        </a>
       </form>
     </div>
   </div>
