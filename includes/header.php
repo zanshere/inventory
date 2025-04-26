@@ -21,6 +21,8 @@ define('BASE_URL', 'https://localhost/git-project/inventory'); // Sesuaikan deng
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="<?= BASE_URL ?>/">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/Images/box_icon_126533.ico" type="image/x-icon">
   <!-- Icon Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Tailwind CSS -->
