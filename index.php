@@ -7,8 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <link rel="shortcut icon" href="/assets/images/box_icon_126533.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/assets/CSS/font.css">
+    <link rel="shortcut icon" href="assets/images/box_icon_126533.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/CSS/font.css">
 </head>
 <body>
 <!-- Konten utama -->
@@ -20,13 +20,13 @@
   <section id="home" class="w-full h-screen flex items-center justify-center bg-gray-900">
     <div class="text-center text-white px-8 py-12">
       <!-- Logo Web -->
-      <img src="/assets/images/logo-removebg-white-edition.png" alt="Website Logo" class="mx-auto w-100 h-auto">
+      <img src="assets/images/logo-removebg-white-edition.png" alt="Website Logo" class="mx-auto w-100 h-auto">
       <!-- Main Heading and Text -->
       <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Simplify Your Business Inventory</h1>
       <p class="text-lg mb-6 max-w-2xl mx-auto">
         Streamline your product management, supplier tracking, and transaction recording with ease.
       </p>
-      <a href="#signup" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+      <a href="auth/login.php" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
         Get Started
       </a>
     </div>
@@ -200,29 +200,34 @@
             </div>
 
             <!-- Contact Form -->
-            <form class="space-y-6">
+            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+              <!-- Replace with your Access Key -->
+              <input type="hidden" name="access_key" value="2389732c-43b6-42d6-addf-e37f33f23504">
                 <div>
                     <label for="name" class="block text-sm font-medium text-white-700 dark:text-gray-300 mb-2">Full Name</label>
-                    <input type="text" id="name" required 
+                    <input type="text" id="name" name="name" required 
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100 transition-all"
                         placeholder="John Doe">
                 </div>
                 
                 <div>
                     <label for="email" class="block text-sm font-medium text-white-700 dark:text-gray-300 mb-2">Email Address</label>
-                    <input type="email" id="email" required 
+                    <input type="email" id="email" name="email" required 
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100 transition-all"
                         placeholder="you@example.com">
                 </div>
 
                 <div>
                     <label for="message" class="block text-sm font-medium text-white-700 dark:text-gray-300 mb-2">Your Message</label>
-                    <textarea id="message" rows="5" required 
+                    <textarea id="message" name="message" rows="5" required 
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-gray-100 transition-all"
                         placeholder="How can I help you?"></textarea>
                 </div>
 
-                <button type="submit" 
+                <!-- Honeypot Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                <button type="submit" name="submit" 
                     class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
                     Send Message
                 </button>
