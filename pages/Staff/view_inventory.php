@@ -244,76 +244,54 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
       }
       
       Swal.fire({
-        title: 'EDIT BARANG',
+        title: 'Edit Item',
         html: `
-          <form id="editForm" class="text-left space-y-4">
-            <input type="hidden" name="action" value="update">
-            <input type="hidden" name="item_id" value="${itemId}">
-            
-            <div>
-              <label class="block mb-2 text-gray-300">Nama Barang</label>
-              <input type="text" name="nama_barang" value="${item.nama_barang}"
-                class="w-full p-2 rounded bg-gray-700 text-white" required>
-            </div>
-
-            <div>
-              <label class="block mb-2 text-gray-300">Kategori</label>
-              <select name="kategori" class="w-full p-2 rounded bg-gray-700 text-white">
-                <option value="Elektronik" ${item.kategori === 'Elektronik' ? 'selected' : ''}>Elektronik</option>
-                <option value="Perkakas" ${item.kategori === 'Perkakas' ? 'selected' : ''}>Perkakas</option>
-                <option value="Bahan" ${item.kategori === 'Bahan' ? 'selected' : ''}>Bahan</option>
-              </select>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label class="block mb-2 text-gray-300">Stok</label>
-                <input type="number" name="stok" value="${item.stok}"
-                  class="w-full p-2 rounded bg-gray-700 text-white" required>
-              </div>
-              
-              <div>
-                <label class="block mb-2 text-gray-300">Harga</label>
-                <input type="number" name="harga" value="${item.harga}"
-                  class="w-full p-2 rounded bg-gray-700 text-white" required>
-              </div>
-            </div>
-
-            <div>
-              <label class="block mb-2 text-gray-300">Supplier</label>
-              <input type="text" name="supplier" value="${item.supplier}"
-                class="w-full p-2 rounded bg-gray-700 text-white" required>
-            </div>
-          </form>
+          <input id="nama_barang" class="swal2-input" placeholder="Nama Barang" value="${item.nama_barang}">
+          <input id="kategori" class="swal2-input" placeholder="Kategori" value="${item.kategori}">
+          <input id="stok" type="number" class="swal2-input" placeholder="Stok" value="${item.stok}">
+          <input id="harga" type="number" class="swal2-input" placeholder="Harga" value="${item.harga}">
+          <input id="supplier" class="swal2-input" placeholder="Supplier" value="${item.supplier}">
         `,
+        focusConfirm: false,
         showCancelButton: true,
-        confirmButtonText: 'Simpan Perubahan',
+        confirmButtonText: 'Simpan',
         cancelButtonText: 'Batal',
         background: '#1F2937',
-        confirmButtonColor: '#2563EB',
-        cancelButtonColor: '#6B7280',
-        focusConfirm: false,
         preConfirm: () => {
-          const formData = new FormData(document.getElementById('editForm'));
-          const data = Object.fromEntries(formData.entries());
-          
-          // Validasi: Pastikan semua kolom terisi
-          if (!Object.values(data).every(value => value.toString().trim() !== '')) {
-            Swal.showValidationMessage('Harap isi semua kolom');
-            return false;
+          return {
+            nama_barang: document.getElementById('nama_barang').value,
+            kategori: document.getElementById('kategori').value,
+            stok: document.getElementById('stok').value,
+            harga: document.getElementById('harga').value,
+            supplier: document.getElementById('supplier').value
           }
-
-          // Submit form secara dinamis
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
           const form = document.createElement('form');
           form.method = 'POST';
-          form.style.display = 'none';
-          for (const [key, value] of Object.entries(data)) {
+          form.action = '';
+
+          const actionInput = document.createElement('input');
+          actionInput.type = 'hidden';
+          actionInput.name = 'action';
+          actionInput.value = 'update';
+          form.appendChild(actionInput);
+
+          const idInput = document.createElement('input');
+          idInput.type = 'hidden';
+          idInput.name = 'item_id';
+          idInput.value = itemId;
+          form.appendChild(idInput);
+
+          for (const key in result.value) {
             const input = document.createElement('input');
             input.type = 'hidden';
             input.name = key;
-            input.value = value;
+            input.value = result.value[key];
             form.appendChild(input);
           }
+
           document.body.appendChild(form);
           form.submit();
         }
@@ -323,28 +301,38 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
     // Fungsi untuk menghapus item dengan SweetAlert2
     function deleteItem(itemId) {
       Swal.fire({
-        title: 'Hapus Barang?',
+        title: 'Yakin ingin menghapus?',
         text: "Data yang dihapus tidak dapat dikembalikan!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#2563EB',
-        cancelButtonColor: '#6B7280',
-        confirmButtonText: 'Ya, Hapus!',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, hapus!',
         cancelButtonText: 'Batal',
         background: '#1F2937'
       }).then((result) => {
         if (result.isConfirmed) {
           const form = document.createElement('form');
           form.method = 'POST';
-          form.innerHTML = `
-            <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="item_id" value="${itemId}">
-          `;
-          document.body.append(form);
+          form.action = '';
+
+          const actionInput = document.createElement('input');
+          actionInput.type = 'hidden';
+          actionInput.name = 'action';
+          actionInput.value = 'delete';
+          form.appendChild(actionInput);
+
+          const idInput = document.createElement('input');
+          idInput.type = 'hidden';
+          idInput.name = 'item_id';
+          idInput.value = itemId;
+          form.appendChild(idInput);
+
+          document.body.appendChild(form);
           form.submit();
         }
       });
-    }
+    } 
   </script>
 </body>
 </html>
