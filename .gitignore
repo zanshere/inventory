@@ -1,2 +1,4 @@
 # Abaikan file .htaccess
 .htaccess
+# Abaikan file connect.php
+includes/connect.php
