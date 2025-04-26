@@ -13,14 +13,14 @@ $role = $_SESSION['role'] ?? 'guest';
 $menuItems = isset($_SESSION['user_id']) ? getSidebarMenu($role) : [];
 
 // Base URL untuk memastikan path konsisten
-define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan dengan base URL 
+define('BASE_URL', 'https://localhost/git-project/inventory'); // Sesuaikan dengan base URL 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="<?= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/') ?>/">
+  <base href="<?= BASE_URL ?>/">
   <!-- Icon Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Tailwind CSS -->
@@ -28,7 +28,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
   <!-- Alpine.js -->
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Font -->
-  <link rel="stylesheet" href="/assets/CSS/font.css">
+  <link rel="stylesheet" href="assets/CSS/font.css">
   <!-- CSS -->
   <style>
     /* Elemen dengan x-cloak disembunyikan sebelum Alpine aktif */
@@ -47,7 +47,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
   <nav class="bg-gray-800 p-4 flex justify-between items-center">
     <!-- Logo dan Nama Website -->
     <div class="flex items-center space-x-1">
-      <img src="/assets/images/Logo.png" alt="Logo" class="w-10 h-10">
+      <img src="assets/images/Logo.png" alt="Logo" class="w-10 h-10">
       <span class="text-white font-bold text-xl">Retail Inventory</span>
     </div>
     <!-- Tombol Menu -->
