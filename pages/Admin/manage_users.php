@@ -168,6 +168,7 @@ if ($search !== '') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manajemen Pengguna</title>
+  <link rel="shortcut icon" href="assets/images/box_icon_126533.ico" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Heroicons CDN -->

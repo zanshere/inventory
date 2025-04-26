@@ -61,6 +61,7 @@ $items = $result->fetch_all(MYSQLI_ASSOC);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manajemen Inventori</title>
+  <link rel="shortcut icon" href="assets/images/box_icon_126533.ico" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- DataTables CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
