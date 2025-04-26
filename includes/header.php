@@ -20,7 +20,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="/git-project/inventory/">
+  <base href="<?= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/') ?>/">
   <!-- Icon Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Tailwind CSS -->
@@ -104,7 +104,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
           <?php endforeach; ?>
           <!-- Logout -->
           <li>
-            <a href="<?= BASE_URL ?>/auth/logout.php" 
+            <a href="auth/logout.php" 
                class="flex items-center space-x-3 text-red-600 hover:text-red-400 p-3 rounded-lg transition-colors">
               <i class="fas fa-sign-out-alt w-5 text-center"></i>
               <span>Logout</span>
@@ -113,7 +113,7 @@ define('BASE_URL', 'http://localhost/git-project/inventory'); // Sesuaikan denga
         <?php else: ?>
           <!-- Login -->
           <li>
-            <a href="<?= BASE_URL ?>/auth/login.php" 
+            <a href="auth/login.php" 
                class="flex items-center space-x-3 text-green-600 hover:text-green-400 p-3 rounded-lg transition-colors">
               <i class="fas fa-sign-in-alt w-5 text-center"></i>
               <span>Login</span>
