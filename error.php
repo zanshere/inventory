@@ -44,8 +44,10 @@ $error = handle_error($error_code);
 
 $colorsString = implode(', ', $error['colors']);
 
-// Base URL untuk memastikan path konsisten
-define('BASE_URL', 'https://localhost/git-project/inventory'); // Sesuaikan dengan base URL 
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+$host = $_SERVER['HTTP_HOST'];
+$base_url = $protocol . $host . '/git-project/inventory';
+define('BASE_URL', $base_url);
 ?>
 <!DOCTYPE html>
 <html lang="en">
