@@ -43,15 +43,19 @@ $error_code = isset($_GET['code']) ? (int)$_GET['code'] : 404;
 $error = handle_error($error_code);
 
 $colorsString = implode(', ', $error['colors']);
+
+// Base URL untuk memastikan path konsisten
+define('BASE_URL', 'https://localhost/git-project/inventory'); // Sesuaikan dengan base URL 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="<?= BASE_URL ?>/">
     <title>Error <?= $error_code ?> - <?= htmlspecialchars($error['title']) ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="./assets/Images/box_icon_126533.ico" type="image/x-icon">
+    <link rel="icon" href="assets/Images/box_icon_126533.ico" type="image/x-icon">
     <style>
         /* Reset dasar */
         * {
