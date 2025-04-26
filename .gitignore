@@ -2,3 +2,5 @@
 .htaccess
 # Abaikan file connect.php
 includes/connect.php
+# Abaikan file maintenance.txt
+maintenance.txt
