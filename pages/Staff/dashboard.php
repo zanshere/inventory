@@ -7,10 +7,8 @@ include '../../functions/isUserBanned.php';
 include '../../functions/getSidebarMenu.php';
 include '../../functions/errorControllers.php';
 
-// Generate menu items
-$menuItems = getSidebarMenu($role); // <-- AMBIL MENU ITEMS
-
 include '../../includes/header.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +16,6 @@ include '../../includes/header.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/git-project/inventory/">
     <!-- Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tailwind CSS -->
@@ -26,7 +23,7 @@ include '../../includes/header.php';
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- Font -->
-    <link rel="stylesheet" href="/assets/CSS/font.css">
+    <link rel="stylesheet" href="assets/CSS/font.css">
     <!-- CSS -->
     <style>
     /* Elemen dengan x-cloak disembunyikan sebelum Alpine aktif */
