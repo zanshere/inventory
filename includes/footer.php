@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/git-project/inventory/">
+    <base href="<?= BASE_URL ?>/">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <footer class="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 py-10 px-10 font-sans tracking-wide">
       <div class="max-w-2xl mx-auto text-center">
-        <a href='javascript:void(0)' class="inline-block"><img src="/assets/images/logo-removebg-white-edition.png" alt="logo"
+        <a href='javascript:void(0)' class="inline-block"><img src="assets/images/logo-removebg-white-edition.png" alt="logo"
           class='w-70' /></a>
         <p class="text-sm mt-8 text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean gravida,
           mi eu pulvinar cursus, sem elit interdum mauris dipiscing elit. Aenean gravida,
